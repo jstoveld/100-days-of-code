@@ -12,6 +12,8 @@ from bs4 import BeautifulSoup
 stock = input("Please type in a stock ticker symbol to query:\n")
 
 #Definining our function parsePrice that will go and look for a specific element on the below URL
+#The input from the user is now converted into a literal sting with the 'f' at the start of the string. 
+#User can now query the stocks they want in real time.
 #Returning the current price
 def prasePrice():
     r=requests.get(f'https://finance.yahoo.com/quote/{stock}')
