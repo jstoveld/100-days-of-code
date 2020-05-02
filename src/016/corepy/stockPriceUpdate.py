@@ -4,12 +4,18 @@ Created 4-30-20 4:29:00PM
 
 @author: JS
 """
-import bs4
+import bs4 #Imports our required modules
 import requests
 from bs4 import BeautifulSoup
 
+#Definining our function parsePrice that will go and look for a specific element on the below URL
+#Returning the current price
+def prasePrice():
+    r=requests.get('https://finance.yahoo.com/quote/DIS')
+    soup=bs4.BeautifulSoup(r.text, "html.parser")
+    price=soup.find_all('div',{'class':'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
+    return price
 
-r=requests.get('https://finance.yahoo.com/quote/FB?p=FB')
-soup=bs4.BeautifulSoup(r.text, "xml")
-
-soup.find_all('div',{'class':'My(6px) Pos(r) smartphone_Mt(6px)'})
+#While loop that gathers this info until the function is interupted.    
+while True:
+    print('the current price: '+str(prasePrice()))
