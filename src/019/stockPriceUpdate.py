@@ -1,0 +1,41 @@
+# -*- coding: utf-8 -*-
+"""
+Created 5-2-20 10:14:00AM
+Edited Last: 5-3-20 8:14:00AM
+
+@author: JS
+"""
+#Imports our required modules
+import os
+import sys
+from datetime import datetime
+import bs4 
+import requests
+from bs4 import BeautifulSoup
+
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S %p")
+
+#User input to request stock prices
+stock = input("Please type in a stock ticker symbol to query:\n")
+
+#Definining our function parsePrice that will go and look for a specific element on the below URL
+#The input from the user is now converted into a literal sting with the 'f' at the start of the string. 
+#User can now query the stocks they want in real time.
+#Returning the current price
+def parsePrice():
+    r=requests.get(f'https://finance.yahoo.com/quote/{stock}')
+    soup=bs4.BeautifulSoup(r.text, "html.parser")
+    price=soup.find_all('div',{'class':'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
+    return price
+
+
+#While loop that gathers this info until the function is interupted.
+while True:
+    print('The current price: $'+str(parsePrice())+' at ' +current_time)
+
+
+#back to previous line sys.stdout.write("\033[F") 
+#clear line sys.stdout.write("\033[K") 
+
+## Idea - Print and clear - then if statement to print only if it changes
