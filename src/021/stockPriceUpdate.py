@@ -25,21 +25,18 @@ def parsePrice():
     r=requests.get(f'https://finance.yahoo.com/quote/{stock}')
     soup=bs4.BeautifulSoup(r.text, "html.parser")
     price=soup.find_all('div',{'class':'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
-#    symbol=soup.find_all('div',{'class':'D(ib) Fz(18px)'})[0].find('span').text
     
-    return price#, symbol
+    return price
+checkDupe = 0
 
 
 #While loop that gathers this info until the function is interupted.
 #From the datetime.now we get the current time in h,m,s 
-#This then prints the name and value of the symbol as well as the timestamp.
+#Name and value of the symbol as well as the timestamp are printed
 while True:
+
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S %p")
-    print('The current price of 'f'({stock}) ''is: $'+str(parsePrice())+' at ' +current_time)
-
-
-#back to previous line sys.stdout.write("\033[F") 
-#clear line sys.stdout.write("\033[K") 
-
-## Idea - Print and clear - then if statement to print only if it changes
+    if checkDupe != parsePrice():
+        print('The current price of 'f'({stock}) ''is: $'+str(parsePrice())+' at ' +current_time)
+        checkDupe = parsePrice()
