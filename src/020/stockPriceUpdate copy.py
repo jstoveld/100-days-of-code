@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created 5-2-20 10:14:00AM
-Edited Last: 5-4-20 6:00:00PM
+Edited Last: 5-3-20 8:14:00AM
 
 @author: JS
 """
@@ -25,7 +25,9 @@ def parsePrice():
     r=requests.get(f'https://finance.yahoo.com/quote/{stock}')
     soup=bs4.BeautifulSoup(r.text, "html.parser")
     price=soup.find_all('div',{'class':'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
-    return price
+    symbol=soup.find_all('div',{'class':'D(ib) Fz(18px)'})[0].find('span').text
+    
+    return price, symbol
 
 
 #While loop that gathers this info until the function is interupted.
