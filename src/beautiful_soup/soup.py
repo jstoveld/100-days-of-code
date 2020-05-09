@@ -1,9 +1,9 @@
 from bs4 import BeautifulSoup
 import requests
-from pushover import init, Client
+#from pushover import init, Client
 
 # define the pushover client keys and tokens
-client = Client("uGCmFNL2ToDycU5qL5qKNmqEadQVW8", api_token="ae5k98ek8o4mjnz7fvqaqgdfdpwsp9")
+#client = Client("uGCmFNL2ToDycU5qL5qKNmqEadQVW8", api_token="ae5k98ek8o4mjnz7fvqaqgdfdpwsp9")
 
 def getGoalsLeaders():
     url="https://www.hockey-reference.com/leagues/NHL_2020_leaders.html"
