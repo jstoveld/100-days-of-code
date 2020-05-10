@@ -15,4 +15,3 @@ from tabulate import tabulate
 dfs = pd.read_html('https://www.nytimes.com/interactive/2020/us/pennsylvania-coronavirus-cases.html')
 for df in dfs:
     print(tabulate(df, headers='keys', tablefmt='psql'))
-    print(df.strip('nan'))
