@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created 5-2-20 10:14:00AM
-Edited Last: 5-7-20 4:12:00PM
+Edited Last: 5-11-20 3:12:00PM
 
 @author: JS
 """
@@ -27,15 +27,12 @@ def getPrice():
     r=requests.get(f'https://finance.yahoo.com/quote/{stock}')
     soup=bs4.BeautifulSoup(r.text, "html.parser")
     price=soup.find_all('div',{'class':'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
-    return price
+    floatPrice = float(price)
+    return floatPrice
+#Call getPrice() for float value.
 
 
-def price_change(current, previous):
-    if (previous != 0):
-        return '%.10f'%(float(abs(current - previous) / previous) * 100.0)
-
-
-previous_price = 0
+newPrice, currentPrice = 0.00, getPrice()
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S %p")
 print('The current price of 'f'({stock}) ''is: $'+str(getPrice())+' at ' +current_time)
@@ -47,9 +44,8 @@ print('The current price of 'f'({stock}) ''is: $'+str(getPrice())+' at ' +curren
 while True:
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S %p")
-    current_price = getPrice()
-    if previous_price != current_price:
-        print('PRICE CHANGE! 'f'({stock}) '+str(price_change(current_price, previous_price))+'% '' is: $'+current_price+' at ' +current_time)
-        previous_price = current_price
-        float(current_price)
+    currentPrice = getPrice()
+    if newPrice != currentPrice:
+        print('PRICE CHANGE! 'f'({stock}) '+(newPrice, currentPrice)+'% '' is: $'+currentPrice+' at ' +current_time)
+        newPrice = currentPrice
     time.sleep(70)
