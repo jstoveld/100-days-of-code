@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created 5-2-20 10:14:00 AM
-Edited Last: 5-19-20 3:00:00 PM
+Edited Last: 5-10-20 2:30:00 PM
 
 @author: JS
 """
@@ -38,31 +38,35 @@ def getPrice():
     r=requests.get(f'https://finance.yahoo.com/quote/{stock}')
     soup=bs4.BeautifulSoup(r.text, "html.parser")
     price=soup.find_all('div',{'class':'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
-    int(price)
     return price
 
 
+#This gets what the time is right now and prints out what the stock is valued at
+#Concatinating the text (str) and the value as well as the stock name and current time
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S %p")
 print('The current price of '+str(getStockName())+ 'is: $'+str(getPrice())+' at ' +current_time)
 
 
-#While loop that gathers this info until the function is interupted.
-#From the datetime.now we get the current time in h,m,s 
-#Name and value of the symbol as well as the timestamp are printed
-while True:
-    newPrice = getPrice()
-    time.sleep(30)
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S %p")
-    currentPrice = getPrice()
-    differencePercent = (newPrice - currentPrice) / currentPrice * 100.0  
-    if differencePercent >= 1.0:
-        print(('The new price of '+getStockName(), differencePercent, currentPrice+' at ' +current_time))
-    elif differencePercent >= -1.0:
-        print(('The new price of '+getStockName(), differencePercent, currentPrice+' at ' +current_time))
+#Check price calls again in 30 seconds to get the price again
+#This will give us something to compare getPrice to for later in our code.
+def priceCheck():
+    #time.sleep(30)
+    r=requests.get(f'https://finance.yahoo.com/quote/{stock}')
+    soup=bs4.BeautifulSoup(r.text, "html.parser")
+    price=soup.find_all('div',{'class':'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
+    return price
 
-                
-#        print('The new price of '+getStockName(), currentPrice+' at ' +current_time)
-        newPrice = currentPrice
-    time.sleep(30)
+
+while True:
+    def priceChangePercent():
+        oldPrice = float(getPrice())
+        newPrice = float(priceCheck())
+        priceChange = ((oldPrice - newPrice) / newPrice * 100.0)
+        return round(priceChange)
+    if priceChangePercent() >= 1:
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S %p")
+        print(('The current price of '+str(getStockName())+ 'is: $'+str(getPrice())+' at ' +current_time)+' +/-% '+str(priceChangePercent()))
+    else:
+        time.sleep(70)
