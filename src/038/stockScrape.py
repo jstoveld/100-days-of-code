@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created 5-2-20 10:14:00 AM
-Edited Last: 5-22-20 2:30:00 PM
+Edited Last: 5-23-20 8:21:00 AM
 
 @author: JS
 """
@@ -66,11 +66,10 @@ while True:
         oldPrice = float(originalPrice)
         newPrice = float(priceCheck())
         priceChange = ((oldPrice - newPrice) / newPrice * 100.0)
-        print(priceChange)
         return round(priceChange)
-    if priceChangePercent() >= 1:
+    if priceChangePercent() == 0:
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S %p")
-        print(('The current price of '+str(getStockName())+ 'is: $'+str(getPrice())+' at ' +current_time)+' +/-% '+str(priceChangePercent()))
+        print((str(priceChangePercent())+' % ''The current price of '+str(getStockName())+ 'is: $'+str(getPrice())+' as of ' +current_time))
     else:
-        time.sleep(10)
+        time.sleep(70)
