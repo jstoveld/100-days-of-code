@@ -41,9 +41,6 @@ def getPrice():
     return price
 
 
-originalPrice = getPrice()
-
-
 #This gets what the time is right now and prints out what the stock is valued at
 #Concatinating the text (str) and the value as well as the stock name and current time
 now = datetime.now()
@@ -61,12 +58,17 @@ def priceCheck():
     return price
 
 
+def originalPrice():
+    originalPrice=float(getPrice())
+    return originalPrice
+
+
 while True:
     def priceChangePercent():
-        oldPrice = float(originalPrice)
+        oldPrice = (originalPrice())
         newPrice = float(priceCheck())
         priceChange = ((oldPrice - newPrice) / newPrice * 100.0)
-        return round(priceChange, 2)
+        return round(priceChange)
     if priceChangePercent() != 0:
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S %p")
