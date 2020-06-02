@@ -7,4 +7,5 @@ class Theater(object):
 
     @property
     def available_seats(self) -> List[Seat]:
-        return [seat for seat in self.seats if seat.available]
+        return [seat for seat in self.seats if seat.available
+]
