@@ -70,13 +70,14 @@ while True:
         oldPrice = (originalPrice())
         newPrice = float(priceCheck())
         priceChange = ((oldPrice - newPrice) / newPrice * 100.0)
-        return round(priceChange)
+        return priceChange
 
 
     truePrice = priceChangePercent()
 
 
-    if truePrice != 0:
+    if truePrice != 0.0:
+        round(truePrice)
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S %p")
         print((str(round(priceChangePercent(), 2))+' % ''The current price of '+str(getStockName())+ 'is: $'+str(getPrice())+' as of ' +current_time))
