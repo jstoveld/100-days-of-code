@@ -6,7 +6,7 @@ from sklearn.svm import SVR
 from sklearn.model_selection import train_test_split
 
 
-#Get Amazon stock data
+#Get Boeing stock data
 BA = quandl.get("WIKI/BA")
 print(BA.head())
 
