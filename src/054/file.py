@@ -20,8 +20,8 @@ style.use('ggplot')
 
 
 #Specifying the range of data we are trying to pull
-start = dt.datetime(2019,1,1)
-end = dt.datetime(2020,6,14)
+start = dt.datetime(2020,1,1)
+end = dt.datetime(2020,6,15)
 
 
 #Specifying what stock we are pulling data on
