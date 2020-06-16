@@ -26,9 +26,7 @@ def save_sp500_tickers():
 
 
     print(tickers)
-
-
     return tickers
 
-
+    
 save_sp500_tickers()
