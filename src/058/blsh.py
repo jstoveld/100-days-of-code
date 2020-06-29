@@ -7,6 +7,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import VotingClassifier, RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import LinearSVC
+from warnings import filterwarnings
+filterwarnings('ignore')
 
 def process_data_for_labels(ticker):
     hm_days = 7
@@ -24,11 +26,11 @@ def buy_sell_hold(*args):
     cols = [c for c in args]
     requirement = 0.02
     for col in cols:
-        if col > 0.029:
-            return 1
-        if col < -0.027:
-            return -1
-    return 0
+        if col > requirement:
+            return "BUY"
+        if col < -requirement:
+            return "SELL"
+    return "HOLD"
 
 def extract_featuresets(ticker):
     tickers, df = process_data_for_labels(ticker)
@@ -66,7 +68,7 @@ def do_ml(ticker):
     X_train, X_test, y_train, y_test = train_test_split(X,y,test_size = 0.25)
     
     # clf = KNeighborsClassifier()
-    clf = VotingClassifier([('lsvc', LinearSVC()),
+    clf = VotingClassifier([('lsvc', LinearSVC(max_iter=10000)),
                             ('knn', KNeighborsClassifier()),
                             ('rfor', RandomForestClassifier())])
     
@@ -78,8 +80,9 @@ def do_ml(ticker):
     print('Predicted spread:', Counter(predictions))
     
     return confidence
-print("BA, Buy, Sell, Hold")
-do_ml('BA')
+    
+print("IBM, Buy, Sell, Hold")
+do_ml('IBM')
 print("A, Buy, Sell, Hold")
 do_ml('A')
 print("AAPL, Buy, Sell, Hold")

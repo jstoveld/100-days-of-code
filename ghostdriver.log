@@ -1,0 +1,37 @@
+[INFO  - 2020-05-12T19:04:33.613Z] GhostDriver - Main - running on port 49227
+[INFO  - 2020-05-12T19:04:35.649Z] Session [6bae67c0-9483-11ea-8ddf-e7a4bd800dec] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2020-05-12T19:04:35.649Z] Session [6bae67c0-9483-11ea-8ddf-e7a4bd800dec] - page.customHeaders:  - {}
+[INFO  - 2020-05-12T19:04:35.649Z] Session [6bae67c0-9483-11ea-8ddf-e7a4bd800dec] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2020-05-12T19:04:35.649Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 6bae67c0-9483-11ea-8ddf-e7a4bd800dec
+[ERROR - 2020-05-12T19:04:37.949Z] Session [6bae67c0-9483-11ea-8ddf-e7a4bd800dec] - page.onError - msg: ReferenceError: Can't find variable: WeakMap
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-05-12T19:04:37.949Z] Session [6bae67c0-9483-11ea-8ddf-e7a4bd800dec] - page.onError - stack:
+  (anonymous function) (https://s.yimg.com/uc/finance/srchjs/0.1.23/js/finSearch.min.js:2)
+  (anonymous function) (https://s.yimg.com/uc/finance/srchjs/0.1.23/js/finSearch.min.js:2)
+  n (https://s.yimg.com/uc/finance/srchjs/0.1.23/js/finSearch.min.js:2)
+  (anonymous function) (https://s.yimg.com/uc/finance/srchjs/0.1.23/js/finSearch.min.js:2)
+  n (https://s.yimg.com/uc/finance/srchjs/0.1.23/js/finSearch.min.js:2)
+  (anonymous function) (https://s.yimg.com/uc/finance/srchjs/0.1.23/js/finSearch.min.js:2)
+  n (https://s.yimg.com/uc/finance/srchjs/0.1.23/js/finSearch.min.js:2)
+  (anonymous function) (https://s.yimg.com/uc/finance/srchjs/0.1.23/js/finSearch.min.js:2)
+  n (https://s.yimg.com/uc/finance/srchjs/0.1.23/js/finSearch.min.js:2)
+  (anonymous function) (https://s.yimg.com/uc/finance/srchjs/0.1.23/js/finSearch.min.js:2)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-05-12T19:04:38.676Z] Session [6bae67c0-9483-11ea-8ddf-e7a4bd800dec] - page.onError - msg: ChunkLoadError: Loading chunk 47 failed.
+(missing: https://s.yimg.com/uc/finance/dd-site/js/QuotePage.230542436f6d64e04ee6.min.js)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-05-12T19:04:38.676Z] Session [6bae67c0-9483-11ea-8ddf-e7a4bd800dec] - page.onError - stack:
+  oe (https://s.yimg.com/uc/finance/dd-site/js/main.b22a080ac5312ef7ca27.min.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-05-12T19:04:38.767Z] Session [6bae67c0-9483-11ea-8ddf-e7a4bd800dec] - page.onError - msg: Unhandled promise rejection ChunkLoadError: Loading chunk 47 failed.
+(missing: https://s.yimg.com/uc/finance/dd-site/js/QuotePage.230542436f6d64e04ee6.min.js)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-05-12T19:04:38.767Z] Session [6bae67c0-9483-11ea-8ddf-e7a4bd800dec] - page.onError - stack:
+  (anonymous function) (https://s.yimg.com/aaq/wf/wf-core-1.40.6.js:1)
+
+  phantomjs://platform/console++.js:263 in error
