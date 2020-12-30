@@ -15,7 +15,6 @@ source = urllib.request.urlopen('https://www.nytimes.com/interactive/2020/us/pen
 soup = bs4.BeautifulSoup(source,'lxml')
 
 
-
 table = soup.find('table')
 
 
